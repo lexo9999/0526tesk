@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Starbucks Intro</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      background-image: url(img/2025_summer_top_bg_250519.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100%;
+      background-color: #cecfc3;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    .intro-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+    }
+
+    .drink-image {
+      width: 300px;
+      height: auto;
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    .logo {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #006241;
+    }
+    .text {
+      font-size: 42px;
+      color: #006241;
+      text-align: center;
+      line-height: 50px;
+      font-weight: bold;
+    }
+    .text0{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+      margin-right: 50px;
+    }
+    .text0 img {
+      width: 200px;
+      height: auto;
+      margin-bottom: 50px;
+    }
+  </style>
+</head>
+<body>
+    
+  <div class="intro-container">
+    <div class="logo">STARBUCKS</div>
+    <div class="text0">
+        <img class="test0_img" src="img/rewards-logo.png" alt="">
+        <div class="text">LIGHT UP<br>YOUR SUMMER</div>
+    </div>
+    <img class="drink-image" src="img/2025_summer_top_drink01_250519.png.png" alt="스타벅스 음료" />
+    <img class="drink-image2" src="img/2025_summer_top_drink02_250519.png.png" alt="스타벅스 음료" />
+    <img class="drink-image3" src="img/2025_summer_top_drink03_250519.png.png" alt="스타벅스 음료" />
+  </div>
+
+  <script>
+    window.addEventListener("load", () => {
+      const images = [
+        document.querySelector(".drink-image"),
+        document.querySelector(".drink-image2"),
+        document.querySelector(".drink-image3")
+      ];
+
+      images.forEach((img, index) => {
+        gsap.to(img, {
+          opacity: 1,
+          scale: 1,
+          y: -20,
+          duration: 1.2,
+          delay: (index + 1) * 0.5,
+          ease: "power3.out"
+        });
+
+        // 부드러운 반복 움직임
+        gsap.to(img, {
+          y: "-=10",
+          duration: 2,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: (index + 1) * 0.5 + 1.2
+        });
+      });
+    });
+  </script>
+</body>
+</html>
